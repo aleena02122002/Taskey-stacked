@@ -8,6 +8,9 @@
 
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../widget/textfeildpassword.dart';
+import '../widget/textfeilduser.dart';
+
 final locator = StackedLocator.instance;
 
 Future<void> setupLocator({
@@ -19,4 +22,6 @@ Future<void> setupLocator({
       environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
+  locator.registerLazySingleton(() => TextFields());
+  locator.registerLazySingleton(() => TextFieldPassword());
 }
