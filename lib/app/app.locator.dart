@@ -6,8 +6,10 @@
 
 // ignore_for_file: public_member_api_docs, implementation_imports, depend_on_referenced_packages
 
+import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../widget/textfeildname.dart';
 import '../widget/textfeildpassword.dart';
 import '../widget/textfeilduser.dart';
 
@@ -22,6 +24,8 @@ Future<void> setupLocator({
       environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
+  locator.registerSingleton(NavigationService());
   locator.registerLazySingleton(() => TextFields());
   locator.registerLazySingleton(() => TextFieldPassword());
+  locator.registerLazySingleton(() => TextFieldName());
 }

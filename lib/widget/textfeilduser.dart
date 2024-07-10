@@ -7,9 +7,7 @@ class TextFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 26.0),
-      child: SizedBox(
+    return SizedBox(
         height: 60,
         width: 327,
         child: TextFormField(
@@ -29,7 +27,6 @@ class TextFields extends StatelessWidget {
               ),
             ),
           ),
-      ),
-    );
+      );
   }
 }
