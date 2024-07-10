@@ -1,5 +1,6 @@
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:taskey/views/calenderView/calender.dart';
 import 'package:taskey/views/home/home.dart';
 import 'package:taskey/views/signin/signin.dart';
 import 'package:taskey/views/signup/signup.dart';
@@ -11,7 +12,8 @@ import 'package:taskey/widget/textfeilduser.dart';
 
   MaterialRoute(page: SignInView,initial: false),
   MaterialRoute(page: SignupView,initial: false),
-  MaterialRoute(page: HomeView,initial: true),
+  MaterialRoute(page: HomeView,initial: false),
+  MaterialRoute(page: CalenderView,initial: true),
 
 ],
   dependencies: [

@@ -58,30 +58,65 @@ class HomeView extends StatelessWidget {
                       child: Image(
                           image: AssetImage("assets/images/Ellipse1.png"))),
                 ),
-                Container(
-                  width: 260,
-                  height: 150,
-                  child: const Card(
-                    color: Color(0xFF3580FF),
-                    child: Column(
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 25.0,horizontal: 24),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       children: [
-                        Text(
-                          "Application Design",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w800,
-                              fontSize: 18),
+                        Container(
+                          width: 260,
+                          height: 150,
+                          child: const Card(
+                            color: Color(0xFF3580FF),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Application Design",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 18),
+                                ),
+                                Text("Ui Design Kit",style: TextStyle(
+                                    color: Color(0xFFC5DAFD),
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12),),
+                              ],
+                            ),
+                          ),
                         ),
-                        Text("Ui Design Kit",style: TextStyle(
-                            color: Color(0xFFC5DAFD),
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12),),
+                        Container(
+                          width: 260,
+                          height: 150,
+                          child: const Card(
+                            color: Color(0xFF0A0C16),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Overlay Design",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 18),
+                                ),
+                                Text("Ui Design Kit",style: TextStyle(
+                                    color: Color(0xFFC5DAFD),
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12),),
+
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );

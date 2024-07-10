@@ -5,10 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:taskey/views/calenderView/calender.dart' as _i5;
 import 'package:taskey/views/home/home.dart' as _i4;
 import 'package:taskey/views/signin/signin.dart' as _i2;
 import 'package:taskey/views/signup/signup.dart' as _i3;
@@ -18,12 +19,15 @@ class Routes {
 
   static const signupView = '/signup-view';
 
-  static const homeView = '/';
+  static const homeView = '/home-view';
+
+  static const calenderView = '/';
 
   static const all = <String>{
     signInView,
     signupView,
     homeView,
+    calenderView,
   };
 }
 
@@ -41,24 +45,34 @@ class StackedRouter extends _i1.RouterBase {
       Routes.homeView,
       page: _i4.HomeView,
     ),
+    _i1.RouteDef(
+      Routes.calenderView,
+      page: _i5.CalenderView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SignInView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i6.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.SignInView(),
         settings: data,
       );
     },
     _i3.SignupView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i6.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.SignupView(),
         settings: data,
       );
     },
     _i4.HomeView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i6.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.HomeView(),
+        settings: data,
+      );
+    },
+    _i5.CalenderView: (data) {
+      return _i6.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.CalenderView(),
         settings: data,
       );
     },
@@ -71,7 +85,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i6.NavigationService {
+extension NavigatorStateExtension on _i7.NavigationService {
   Future<dynamic> navigateToSignInView([
     int? routerId,
     bool preventDuplicates = true,
@@ -114,6 +128,20 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToCalenderView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.calenderView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithSignInView([
     int? routerId,
     bool preventDuplicates = true,
@@ -150,6 +178,20 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCalenderView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.calenderView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

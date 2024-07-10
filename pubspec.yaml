@@ -38,6 +38,8 @@ dependencies:
   stacked: ^3.4.3
   stacked_generator: ^1.6.1
   stacked_services: ^1.5.0
+  intl:
+  google_fonts:
   icons_plus: ^5.0.0
   fluentui_system_icons: ^1.1.246
   flutter_emoji: ^2.5.1
