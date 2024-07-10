@@ -14,11 +14,11 @@ import 'package:taskey/views/signin/signin.dart' as _i2;
 import 'package:taskey/views/signup/signup.dart' as _i3;
 
 class Routes {
-  static const signInView = '/';
+  static const signInView = '/sign-in-view';
 
   static const signupView = '/signup-view';
 
-  static const homeView = '/home-view';
+  static const homeView = '/';
 
   static const all = <String>{
     signInView,
