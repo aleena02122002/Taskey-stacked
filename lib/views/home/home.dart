@@ -73,7 +73,7 @@ class HomeView extends StatelessWidget {
                               fontWeight: FontWeight.w800,
                               fontSize: 18),
                         ),
-                        Text("Ui Design Kit",style: TextStyle(
+                        Text("Ui Design  Kit",style: TextStyle(
                             color: Color(0xFFC5DAFD),
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w400,
