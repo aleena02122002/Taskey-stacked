@@ -10,10 +10,10 @@ import 'package:taskey/widget/textfeilduser.dart';
 
 @StackedApp(routes: [
 
-  MaterialRoute(page: SignInView,initial: false),
+  MaterialRoute(page: SignInView,initial: true),
   MaterialRoute(page: SignupView,initial: false),
   MaterialRoute(page: HomeView,initial: false),
-  MaterialRoute(page: CalenderView,initial: true),
+  MaterialRoute(page: CalenderView,initial: false),
 
 ],
   dependencies: [

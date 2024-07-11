@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:taskey/app/app.router.dart';
 import 'package:taskey/views/home/home_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
@@ -27,7 +28,9 @@ class HomeView extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      viewmodel.navigationServices.navigateToCalenderView();
+                    },
                     icon: const Icon(Icons.notifications_none,
                         color: Colors.white))
               ],

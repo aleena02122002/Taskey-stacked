@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
@@ -21,7 +22,7 @@ class CalenderView extends StatelessWidget {
                     color: Colors.white,
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500,
-                    fontSize: 18),
+                    fontSize: 21),
               ),
               titleSpacing: 60,
               leading: const Icon(
@@ -31,7 +32,7 @@ class CalenderView extends StatelessWidget {
               actions: [
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.edit, color: Colors.white)),
+                    icon: const Icon(Icons.edit, color: Colors.white)),
               ],
             ),
             body: Column(
@@ -39,32 +40,61 @@ class CalenderView extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0,vertical: 20),
                       child: Text(
                         "${DateFormat.yMMMMd().format(DateTime.now())} ✍",
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontFamily: "Poppins",
                             fontSize: 25,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(width: 90),
+                    const SizedBox(width: 90),
                     Container(
                         height: 42,
                         width: 42,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3580FF),
+                            color: const Color(0xFF3580FF),
                             borderRadius: BorderRadius.circular(20)),
                         child: IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.calendar_month_outlined,
                               color: Colors.white,
                             ))),
-
                   ],
                 ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15,left: 15,right: 15),
+                  child: DatePicker(
+                    DateTime.now(),
+                    height: 118,
+                    width: 50,
+                    initialSelectedDate: DateTime.now(),
+                    selectedTextColor: Colors.white,
+                    selectionColor: const Color(0xFF3580FF),
+                    dateTextStyle: const TextStyle(
+                        fontFamily: "Poppins",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF848A94)
+                    ),
+                    dayTextStyle: const TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF848A94)
+                    ),
+                    monthTextStyle: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF848A94)
+                    ),
+                  ),
+                ),
+
               ],
             ),
           );

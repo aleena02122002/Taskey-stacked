@@ -40,6 +40,7 @@ dependencies:
   stacked_services: ^1.5.0
   intl:
   google_fonts:
+  date_picker_timeline:
   icons_plus: ^5.0.0
   fluentui_system_icons: ^1.1.246
   flutter_emoji: ^2.5.1
