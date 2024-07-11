@@ -25,10 +25,8 @@ class CalenderView extends StatelessWidget {
                     fontSize: 21),
               ),
               titleSpacing: 60,
-              leading: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              ),
+              leading:IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back_ios,
+                color: Colors.white,)),
               actions: [
                 IconButton(
                     onPressed: () {},
