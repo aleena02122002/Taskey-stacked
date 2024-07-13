@@ -38,12 +38,13 @@ dependencies:
   stacked: ^3.4.3
   stacked_generator: ^1.6.1
   stacked_services: ^1.5.0
-  table_calendar: ^3.1.2
+  table_calendar: ^3.0.6
   intl:
   google_fonts:
   date_picker_timeline:
   icons_plus: ^5.0.0
   flutter_emoji: ^2.5.1
+  calendar_view: ^1.2.0
 
 dev_dependencies:
   flutter_test:
