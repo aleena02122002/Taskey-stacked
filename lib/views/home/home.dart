@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'package:taskey/app/app.router.dart';
 import 'package:taskey/views/home/home_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+   const HomeView({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +21,8 @@ class HomeView extends StatelessWidget {
               leading:
                   const Icon(Icons.dashboard_outlined, color: Colors.white),
               titleSpacing: 70,
-              title: const Text(
-                "Friday, 10",
+              title: Text(
+                "${DateFormat.yMEd().format(DateTime.now())} ",
                 style: TextStyle(
                     color: Colors.white,
                     fontFamily: "Poppins",

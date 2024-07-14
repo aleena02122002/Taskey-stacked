@@ -45,8 +45,40 @@ class CalenderView extends StatelessWidget {
               children: [
                 _dateTimeBar(),
                 _datePicker(),
-                TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime.utc(1950,01,01), lastDay: DateTime.utc(2050,12,31))
+                TableCalendar(
+                    calendarFormat: CalendarFormat.month,
+                    headerStyle: const HeaderStyle(
+                      titleCentered: true,
+                        leftChevronIcon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        rightChevronIcon: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
+                        formatButtonVisible: false,
+                        titleTextStyle: TextStyle(color: Color(0xFF3580FF),fontSize: 18,)),
 
+                    calendarStyle: CalendarStyle(
+                      selectedDecoration: BoxDecoration(
+                        color: Colors.blue, // Customize the selected day color
+                        shape: BoxShape.circle,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      todayDecoration: BoxDecoration(
+                        color:
+                            Colors.blueAccent, // Customize today's date color
+                        shape: BoxShape.circle,
+                      ),
+                      isTodayHighlighted: true,
+                      defaultTextStyle: TextStyle(color: Colors.white),
+                      weekendTextStyle: TextStyle(color: Colors.white),
+                      weekNumberTextStyle: TextStyle(color: Colors.white),
+                    ),
+                    focusedDay: DateTime.now(),
+                    firstDay: DateTime.utc(1950, 01, 01),
+                    lastDay: DateTime.utc(2050, 12, 31))
               ],
             ),
           );
