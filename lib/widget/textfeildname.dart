@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldName extends StatelessWidget {
+  final TextEditingController nameController;
 
-  const TextFieldName({super.key,});
+  TextFieldName({Key? key, TextEditingController? nameController})
+      : nameController = nameController ?? TextEditingController(),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +16,7 @@ class TextFieldName extends StatelessWidget {
         width: 327,
         height: 60,
         child: TextFormField(
+          controller: nameController,
           decoration: const InputDecoration(
             hintText: "Name",
             hintStyle: TextStyle(color: Color(0xFF848A94)),
