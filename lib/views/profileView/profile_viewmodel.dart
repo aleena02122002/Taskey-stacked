@@ -7,6 +7,6 @@ class ProfileViewmodel extends BaseViewModel{
   final navigationServices = locator<NavigationService>();
 
   void navigate(){
-    navigationServices.navigateTo(Routes.calenderView);
+    navigationServices.navigateTo(Routes.editProfile);
   }
 }
