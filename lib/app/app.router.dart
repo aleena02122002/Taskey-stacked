@@ -75,8 +75,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i3.SignupView: (data) {
+      final args = data.getArgs<SignupViewArguments>(
+        orElse: () => const SignupViewArguments(),
+      );
       return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.SignupView(),
+        builder: (context) => _i3.SignupView(key: args.key),
         settings: data,
       );
     },
@@ -99,8 +102,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i7.EditProfile: (data) {
+      final args = data.getArgs<EditProfileArguments>(
+        orElse: () => const EditProfileArguments(),
+      );
       return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i7.EditProfile(),
+        builder: (context) => _i7.EditProfile(key: args.key),
         settings: data,
       );
     },
@@ -111,6 +117,50 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class SignupViewArguments {
+  const SignupViewArguments({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant SignupViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
+}
+
+class EditProfileArguments {
+  const EditProfileArguments({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant EditProfileArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
 }
 
 extension NavigatorStateExtension on _i9.NavigationService {
@@ -128,14 +178,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToSignupView([
+  Future<dynamic> navigateToSignupView({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.signupView,
+        arguments: SignupViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -184,14 +236,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToEditProfile([
+  Future<dynamic> navigateToEditProfile({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.editProfile,
+        arguments: EditProfileArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -212,14 +266,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSignupView([
+  Future<dynamic> replaceWithSignupView({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.signupView,
+        arguments: SignupViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -268,14 +324,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithEditProfile([
+  Future<dynamic> replaceWithEditProfile({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.editProfile,
+        arguments: EditProfileArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -5,7 +5,13 @@ import 'package:taskey/views/signup/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
-  const SignupView({super.key});
+    SignupView({super.key});
+
+  final  controllerName = TextEditingController();
+
+  final  controllerEmail = TextEditingController();
+
+  final  controllerPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +30,7 @@ class SignupView extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     title: const Text(
                       "Sign Up",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: "Poppins"),
+                      style: TextStyle(color: Colors.white, fontFamily: "Poppins"),
                     ),
                     titleSpacing: 60,
                     leading: const Icon(
@@ -66,10 +71,9 @@ class SignupView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10.0),
-                        viewmodel.textfieldName,
-                        viewmodel.textfieldService,
-                        SizedBox(height: 26),
-                        viewmodel.textfieldPassword,
+                        _textFeild("Name", controllerName),
+                        _textFeild("Email", controllerEmail),
+                        _textFeild("Password", controllerPassword),
                         Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
@@ -126,7 +130,7 @@ class SignupView extends StatelessWidget {
                                           color: const Color(0xFF191D30))),
                                   child: const Image(
                                     image:
-                                        AssetImage("assets/images/path4.png"),
+                                    AssetImage("assets/images/path4.png"),
                                     height: 26,
                                     width: 21,
                                   ),
@@ -153,7 +157,7 @@ class SignupView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         RichText(
                           text: TextSpan(
                             children: [
@@ -176,7 +180,7 @@ class SignupView extends StatelessWidget {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                  viewmodel.navigationServices.navigateToSignInView();
+                                    viewmodel.navigationServices.navigateToSignInView();
                                   },
                               ),
                             ],
@@ -190,5 +194,30 @@ class SignupView extends StatelessWidget {
             ),
           );
         });
+  }
+
+  _textFeild(String text, TextEditingController controllers){
+    return SizedBox(
+      width: 327,
+      height: 60,
+      child: TextFormField(
+        controller: controllers,
+        decoration:  InputDecoration(
+          hintText: text,
+          hintStyle: const TextStyle(color: Color(0xFF848A94)),
+          enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+            borderSide: BorderSide(color: Color(0xFF191D30)),
+          ),
+          focusedBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+            borderSide: BorderSide(
+              color: Color(0xFF3580FF),
+              width: 1.0,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
