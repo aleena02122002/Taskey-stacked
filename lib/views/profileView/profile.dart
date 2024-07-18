@@ -27,10 +27,13 @@ class ProfileView extends StatelessWidget {
             ),
             body: Column(
               children: [
-                const Align(
-                    alignment: Alignment.topRight,
-                    child:
-                        Image(image: AssetImage("assets/images/ellipse.png"))),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: const Align(
+                      alignment: Alignment.topRight,
+                      child:
+                          Image(image: AssetImage("assets/images/ellipse.png"))),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 60.0),
                   child: Row(
