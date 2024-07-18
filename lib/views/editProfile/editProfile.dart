@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:taskey/views/editProfile/editProfile_viewmodel.dart';
@@ -53,11 +54,11 @@ class EditProfile extends StatelessWidget {
                 Center(
                   child: Stack(
                     children: [
-                      const CircleAvatar(
-                        radius: 64,
+                      ClipOval(
                         child: Image(
-                          image: AssetImage('assets/images/profile2.jpg'),
-                          width: 400,
+                          image: AssetImage("assets/images/profile2.jpg"),
+                          height: 110,
+                          width: 110,
                         ),
                       ),
                       Positioned(
@@ -72,7 +73,7 @@ class EditProfile extends StatelessWidget {
                           ),
                           child: IconButton(
                               onPressed: (){
-                                viewmodel.pickImage;
+                                viewmodel.pickImage();
                               },
                               icon: const Icon(Icons.photo_camera_outlined),
                               color: Colors.white),
