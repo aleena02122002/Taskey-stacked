@@ -5,10 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i9;
+import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:taskey/views/AI/chat_page/chat_page.dart' as _i8;
 import 'package:taskey/views/calenderView/calender.dart' as _i5;
 import 'package:taskey/views/editProfile/editProfile.dart' as _i7;
 import 'package:taskey/views/home/home.dart' as _i4;
@@ -17,7 +18,7 @@ import 'package:taskey/views/signin/signin.dart' as _i2;
 import 'package:taskey/views/signup/signup.dart' as _i3;
 
 class Routes {
-  static const signInView = '/sign-in-view';
+  static const signInView = '/';
 
   static const signupView = '/signup-view';
 
@@ -25,9 +26,11 @@ class Routes {
 
   static const calenderView = '/calender-view';
 
-  static const profileView = '/';
+  static const profileView = '/profile-view';
 
   static const editProfile = '/edit-profile';
+
+  static const chatPage = '/chat-page';
 
   static const all = <String>{
     signInView,
@@ -36,6 +39,7 @@ class Routes {
     calenderView,
     profileView,
     editProfile,
+    chatPage,
   };
 }
 
@@ -65,12 +69,19 @@ class StackedRouter extends _i1.RouterBase {
       Routes.editProfile,
       page: _i7.EditProfile,
     ),
+    _i1.RouteDef(
+      Routes.chatPage,
+      page: _i8.ChatPage,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SignInView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.SignInView(),
+      final args = data.getArgs<SignInViewArguments>(
+        orElse: () => const SignInViewArguments(),
+      );
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => _i2.SignInView(key: args.key),
         settings: data,
       );
     },
@@ -78,25 +89,25 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<SignupViewArguments>(
         orElse: () => const SignupViewArguments(),
       );
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => _i3.SignupView(key: args.key),
         settings: data,
       );
     },
     _i4.HomeView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.HomeView(),
         settings: data,
       );
     },
     _i5.CalenderView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.CalenderView(),
         settings: data,
       );
     },
     _i6.ProfileView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ProfileView(),
         settings: data,
       );
@@ -105,8 +116,14 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<EditProfileArguments>(
         orElse: () => const EditProfileArguments(),
       );
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => _i7.EditProfile(key: args.key),
+        settings: data,
+      );
+    },
+    _i8.ChatPage: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.ChatPage(),
         settings: data,
       );
     },
@@ -119,10 +136,32 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
+class SignInViewArguments {
+  const SignInViewArguments({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant SignInViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
+}
+
 class SignupViewArguments {
   const SignupViewArguments({this.key});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -144,7 +183,7 @@ class SignupViewArguments {
 class EditProfileArguments {
   const EditProfileArguments({this.key});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -163,15 +202,17 @@ class EditProfileArguments {
   }
 }
 
-extension NavigatorStateExtension on _i9.NavigationService {
-  Future<dynamic> navigateToSignInView([
+extension NavigatorStateExtension on _i10.NavigationService {
+  Future<dynamic> navigateToSignInView({
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -179,7 +220,7 @@ extension NavigatorStateExtension on _i9.NavigationService {
   }
 
   Future<dynamic> navigateToSignupView({
-    _i8.Key? key,
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -237,7 +278,7 @@ extension NavigatorStateExtension on _i9.NavigationService {
   }
 
   Future<dynamic> navigateToEditProfile({
-    _i8.Key? key,
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -252,14 +293,30 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSignInView([
+  Future<dynamic> navigateToChatPage([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
+    return navigateTo<dynamic>(Routes.chatPage,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSignInView({
+    _i9.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
     return replaceWith<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -267,7 +324,7 @@ extension NavigatorStateExtension on _i9.NavigationService {
   }
 
   Future<dynamic> replaceWithSignupView({
-    _i8.Key? key,
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -325,7 +382,7 @@ extension NavigatorStateExtension on _i9.NavigationService {
   }
 
   Future<dynamic> replaceWithEditProfile({
-    _i8.Key? key,
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -334,6 +391,20 @@ extension NavigatorStateExtension on _i9.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.editProfile,
         arguments: EditProfileArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithChatPage([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.chatPage,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

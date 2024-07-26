@@ -1,23 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:stacked/stacked.dart';
 import 'package:taskey/app/app.router.dart';
+import 'package:taskey/views/home/home.dart';
+import 'package:taskey/views/signin/signin.dart';
 import 'package:taskey/views/signup/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
     SignupView({super.key});
 
-  final  controllerName = TextEditingController();
-
-  final  controllerEmail = TextEditingController();
-
-  final  controllerPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.nonReactive(
         viewModelBuilder: () => SignupViewmodel(),
         builder: (context, viewmodel, index) {
+
+
+
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: SafeArea(
@@ -71,9 +72,9 @@ class SignupView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10.0),
-                        _textFeild("Name", controllerName),
-                        _textFeild("Email", controllerEmail),
-                        _textFeild("Password", controllerPassword),
+                        _textFeild("Name", viewmodel.controllerName),
+                        _textFeild("Email", viewmodel.controllerEmail),
+                        _textFeild("Password", viewmodel.controllerPassword),
                         Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
@@ -91,7 +92,7 @@ class SignupView extends StatelessWidget {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            viewmodel.navigationServices.navigateToHomeView();
+                            viewmodel.registerUser(context);
                           },
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(327, 48),
@@ -201,6 +202,7 @@ class SignupView extends StatelessWidget {
       width: 327,
       height: 60,
       child: TextFormField(
+        style: TextStyle(color: Colors.white),
         controller: controllers,
         decoration:  InputDecoration(
           hintText: text,

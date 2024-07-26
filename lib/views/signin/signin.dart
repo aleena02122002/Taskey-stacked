@@ -1,11 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:taskey/app/app.router.dart';
+import 'package:taskey/views/home/home.dart';
 import 'package:taskey/views/signin/signin_viewmodel.dart';
 
 class SignInView extends StatelessWidget {
-  const SignInView({super.key});
+   SignInView({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +70,10 @@ class SignInView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 26.0),
-                      viewmodel.textfieldService,
+
+                      _textFeild("Email", viewmodel.emailController),
                       SizedBox(height: 26),
-                      viewmodel.textfieldPassword,
+                      _textFeild("Password", viewmodel.passwordController),
                       Align(
                         alignment: Alignment.topRight,
                         child: TextButton(
@@ -86,7 +91,8 @@ class SignInView extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
-                          viewmodel.navigationServices.navigateToHomeView();
+                          viewmodel.loginUser(context);
+
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(327, 48),

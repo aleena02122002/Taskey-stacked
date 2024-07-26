@@ -9,6 +9,7 @@
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../views/AI/consts.dart';
 import '../widget/textfeildname.dart';
 import '../widget/textfeildpassword.dart';
 import '../widget/textfeilduser.dart';
@@ -25,6 +26,7 @@ Future<void> setupLocator({
 
 // Register dependencies
   locator.registerSingleton(NavigationService());
+  locator.registerLazySingleton(() => apiKey());
   locator.registerLazySingleton(() => TextFields());
   locator.registerLazySingleton(() => TextFieldPassword());
   locator.registerLazySingleton(() => TextFieldName());
