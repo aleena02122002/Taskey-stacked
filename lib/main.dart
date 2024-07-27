@@ -15,7 +15,7 @@ Future<void> main() async {
    runApp(MyApp());
 }
 
-ThemeManager _themeManager = ThemeManager();
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
     );
